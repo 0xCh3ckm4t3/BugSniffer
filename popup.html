@@ -19,8 +19,50 @@
       </div>
     </div>
     
+    <!-- Enable/Disable Toggle -->
+    <div id="toggle-row" style="display: flex; align-items: center; justify-content: flex-end; padding: 10px 20px 0 0;">
+      <label style="font-size: 13px; font-weight: 500; margin-right: 10px;">Enabled</label>
+      <label class="switch">
+        <input type="checkbox" id="enable-toggle" checked>
+        <span class="slider round"></span>
+      </label>
+    </div>
     <!-- Stats -->
     <div id="stats">
+  <style>
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 38px;
+      height: 20px;
+    }
+    .switch input { display: none; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 20px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #667eea;
+    }
+    input:checked + .slider:before {
+      transform: translateX(18px);
+    }
+  </style>
       <div class="stat-item">
         <span class="stat-number" id="file-count">0</span>
         <span class="stat-label">JS Files Found</span>

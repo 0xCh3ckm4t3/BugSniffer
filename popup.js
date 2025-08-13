@@ -1,5 +1,22 @@
-// popup.js - Enhanced UI with modern features
+// popup.js - Enhanced UI with enable/disable feature
 let currentDomain = null;
+let enabled = true;
+// Enable/disable toggle logic
+const enableToggle = document.getElementById('enable-toggle');
+function setEnabledUI(state) {
+  enableToggle.checked = state;
+  enabled = state;
+  document.body.classList.toggle('disabled', !state);
+  // Optionally, gray out UI or show a banner if disabled
+}
+chrome.storage.local.get(['bugsniffer_enabled'], data => {
+  setEnabledUI(data.bugsniffer_enabled !== false); // default enabled
+});
+enableToggle.addEventListener('change', () => {
+  chrome.storage.local.set({ bugsniffer_enabled: enableToggle.checked });
+  setEnabledUI(enableToggle.checked);
+  showToast(enableToggle.checked ? 'Extension enabled' : 'Extension disabled', 'info');
+});
 
 // Toast notification function
 function showToast(message, type = 'success') {
@@ -45,6 +62,14 @@ function updateStats(fileCount) {
 
 // Render the file list with enhanced UI
 function render(urls) {
+  if (!enabled) {
+    document.getElementById('list').innerHTML = '';
+    document.getElementById('empty').style.display = 'flex';
+    document.getElementById('copy').disabled = true;
+    document.getElementById('download').disabled = true;
+    updateStats(0);
+    return;
+  }
   const list = document.getElementById('list');
   const empty = document.getElementById('empty');
   const copyBtn = document.getElementById('copy');

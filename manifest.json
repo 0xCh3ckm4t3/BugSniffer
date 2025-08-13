@@ -3,7 +3,16 @@
   "name": "BugSniffer - JS File Collector",
   "version": "1.0.0",
   "description": "Automatically collects and lists all JavaScript file URLs per domain.",
-  "permissions": ["activeTab", "storage", "scripting"],
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "background": {
     "service_worker": "background.js"
   },
