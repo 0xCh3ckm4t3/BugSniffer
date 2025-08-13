@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BugSniffer - JavaScript File Collector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="container">
+    <!-- Header -->
+    <div id="header">
+      <div id="logo">
+        <span class="bug-icon">🐛</span>
+        <h1>BugSniffer</h1>
+      </div>
+      <div id="domain-info">
+        <span id="current-domain">Loading...</span>
+      </div>
+    </div>
+    
+    <!-- Stats -->
+    <div id="stats">
+      <div class="stat-item">
+        <span class="stat-number" id="file-count">0</span>
+        <span class="stat-label">JS Files Found</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" id="domain-count">0</span>
+        <span class="stat-label">Unique Domains</span>
+      </div>
+    </div>
+    
+    <!-- Actions -->
+    <div id="actions">
+      <button id="copy" class="btn btn-secondary">
+        <span class="btn-icon">📋</span>
+        Copy All
+      </button>
+      <button id="download" class="btn btn-primary">
+        <span class="btn-icon">💾</span>
+        Download
+      </button>
+    </div>
+    
+    <!-- File List -->
+    <div id="list-container">
+      <div id="list-header">
+        <h3>JavaScript Files</h3>
+        <button id="clear" class="btn-small">Clear All</button>
+      </div>
+      <div id="list"></div>
+      <div id="empty" style="display:none;">
+        <div class="empty-icon">📁</div>
+        <p>No JavaScript files detected on this domain.</p>
+        <small>Browse any website to start collecting JS files!</small>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <div id="footer">
+      <small>Files are stored per domain • Data stays local</small>
+    </div>
+  </div>
+  
+  <!-- Toast notification -->
+  <div id="toast" class="toast"></div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
