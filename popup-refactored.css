@@ -35,7 +35,7 @@
   
   /* Dimensions */
   --container-width: 540px;
-  --container-height: 720px;
+  --container-height: 800px;
   --border-radius: 12px;
   --border-radius-small: 6px;
 }
@@ -45,8 +45,8 @@ body {
   background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   color: var(--text-primary);
   width: var(--container-width);
-  height: var(--container-height);
-  overflow: hidden;
+  min-height: var(--container-height);
+  overflow: visible;
   margin: 0;
   padding: 0;
 }
@@ -56,11 +56,11 @@ body {
   background: var(--bg-glass);
   border: 1px solid var(--border-primary);
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* Header Section */
@@ -378,7 +378,6 @@ input:checked + .slider:before {
   backdrop-filter: blur(15px);
   display: flex;
   flex-direction: column;
-  min-height: 300px;
 }
 
 #js-list-header {
@@ -428,8 +427,9 @@ input:checked + .slider:before {
   flex: 1;
   overflow-y: auto;
   min-height: 200px;
-  max-height: 320px;
+  max-height: 500px;
   position: relative;
+  scroll-behavior: smooth;
 }
 
 #js-list {
@@ -595,24 +595,31 @@ input:checked + .slider:before {
   margin: 0 auto;
 }
 
-/* Custom Scrollbar */
+/* Modern Custom Scrollbar - Enhanced for better UX */
 #js-list-container::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 #js-list-container::-webkit-scrollbar-track {
   background: var(--bg-secondary);
-  border-radius: 3px;
+  border-radius: 4px;
+  margin: 4px 0;
 }
 
 #js-list-container::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--text-accent), rgba(0, 255, 136, 0.3));
-  border-radius: 3px;
-  transition: background 0.3s ease;
+  background: linear-gradient(180deg, var(--text-accent), rgba(0, 255, 136, 0.6));
+  border-radius: 4px;
+  border: 1px solid var(--bg-secondary);
+  transition: all 0.3s ease;
 }
 
 #js-list-container::-webkit-scrollbar-thumb:hover {
-  background: var(--text-accent);
+  background: linear-gradient(180deg, #00ff88, #00cc6a);
+  transform: scaleX(1.1);
+}
+
+#js-list-container::-webkit-scrollbar-corner {
+  background: var(--bg-secondary);
 }
 
 /* Toast Notifications */
