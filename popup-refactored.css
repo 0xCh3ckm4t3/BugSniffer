@@ -1,0 +1,11 @@
+/* ===== BUGSNIFFER - MAIN STYLES ===== */
+/* Modular CSS Architecture */
+
+@import url('./styles/variables.css');
+@import url('./styles/base.css');
+@import url('./styles/header.css');
+@import url('./styles/toggle.css');
+@import url('./styles/stats.css');
+@import url('./styles/actions.css');
+@import url('./styles/js-list.css');
+@import url('./styles/utilities.css');

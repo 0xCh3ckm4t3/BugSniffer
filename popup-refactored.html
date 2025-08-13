@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BugSniffer - JavaScript File Collector</title>
+  <link rel="stylesheet" href="popup-refactored.css">
+</head>
+<body>
+  <div id="container">
+    <!-- Header Section -->
+    <header id="header">
+      <div id="logo">
+        <span class="bug-icon">🐛</span>
+        <h1>BugSniffer</h1>
+      </div>
+      <div id="domain-info">
+        <span id="current-domain">Loading...</span>
+      </div>
+      
+      <!-- Toggle Section -->
+      <div id="toggle-row">
+        <span class="toggle-label">Enabled</span>
+        <label class="switch">
+          <input type="checkbox" id="enable-toggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </header>
+    
+    <!-- Stats Section -->
+    <section id="stats">
+      <h3>📊 Statistics</h3>
+      <div id="stats-grid">
+        <div class="stat-item">
+          <div class="stat-label">JS Files Found</div>
+          <div class="stat-value" id="file-count">0</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Unique Domains</div>
+          <div class="stat-value" id="domain-count">0</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Actions Section -->
+    <section id="actions">
+      <h3>⚡ Actions</h3>
+      <div id="actions-grid">
+        <button id="copy" class="action-btn" type="button">
+          <span>📋</span>
+          Copy All
+        </button>
+        <button id="download" class="action-btn" type="button">
+          <span>💾</span>
+          Download
+        </button>
+      </div>
+    </section>
+    
+    <!-- JavaScript Files List -->
+    <section id="js-list-section">
+      <div id="js-list-header">
+        <h3>📄 JavaScript Files</h3>
+        <button id="refresh-btn" type="button">🔄 Refresh</button>
+      </div>
+      <div id="js-list-container">
+        <ul id="js-list"></ul>
+        <div id="empty" class="empty-state" style="display:none;">
+          <div class="empty-icon">📁</div>
+          <h4>No JavaScript files detected</h4>
+          <p>Browse any website to start collecting JS files automatically!</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="footer" style="padding: 12px 28px; text-align: center; font-size: 0.8em; color: var(--text-muted); border-top: 1px solid var(--border-secondary);">
+      <small>Files are stored per domain • Data stays local</small>
+    </footer>
+  </div>
+  
+  <!-- Toast notification -->
+  <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+  
+  <script type="module" src="js/popup-app.js"></script>
+</body>
+</html>

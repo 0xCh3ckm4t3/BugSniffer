@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BugSniffer - JavaScript File Collector</title>
+  <link rel="stylesheet" href="popup-refactored.css">
+</head>
+<body>
+  <div id="container">
+    <!-- Header -->
+    <div id="header">
+      <div id="logo">
+        <span class="bug-icon">🐛</span>
+        <h1>BugSniffer</h1>
+      </div>
+      <div id="domain-info">
+        <span id="current-domain">Loading...</span>
+      </div>
+      
+      <!-- Enable/Disable Toggle -->
+      <div id="toggle-row">
+        <label class="toggle-label">Enabled</label>
+        <label class="switch">
+          <input type="checkbox" id="enable-toggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+    
+    <!-- Stats -->
+    <div id="stats">
+      <h3>📊 Statistics</h3>
+      <div id="stats-grid">
+        <div class="stat-item">
+          <div class="stat-label">JS Files Found</div>
+          <div class="stat-value" id="file-count">0</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Unique Domains</div>
+          <div class="stat-value" id="domain-count">0</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Actions -->
+    <div id="actions">
+      <h3>⚡ Actions</h3>
+      <div id="actions-grid">
+        <button id="copy" class="action-btn">
+          <span class="btn-icon">📋</span>
+          Copy All
+        </button>
+        <button id="download" class="action-btn">
+          <span class="btn-icon">💾</span>
+          Download
+        </button>
+      </div>
+    </div>
+    
+    <!-- JavaScript Files List -->
+    <div id="js-list-section">
+      <div id="js-list-header">
+        <h3>📄 JavaScript Files</h3>
+        <button id="clear" class="action-btn">Clear All</button>
+      </div>
+      
+      <div id="js-list-container">
+        <div id="list"></div>
+        <div id="empty" class="empty-state" style="display: none;">
+          <div class="empty-icon">📁</div>
+          <h4>No JavaScript files detected</h4>
+          <p>Browse any website to start collecting JS files!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Toast notification -->
+  <div id="toast" class="toast"></div>
+  
+  <!-- Load the main application -->
+  <script type="module" src="js/main-popup.js"></script>
+</body>
+</html>
