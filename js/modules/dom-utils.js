@@ -19,19 +19,18 @@ export class DOMUtils {
     return element;
   }
 
-  static toggleClass(element, className, condition = null) {
-    if (condition !== null) {
-      element.classList.toggle(className, condition);
-    } else {
-      element.classList.toggle(className);
-    }
-  }
-
   static setContent(element, content) {
     if (typeof content === 'string') {
       element.textContent = content;
     } else {
       element.innerHTML = content;
+    }
+  }
+  
+  static setText(elementId, text) {
+    const element = this.getElement(elementId);
+    if (element) {
+      element.textContent = text;
     }
   }
 

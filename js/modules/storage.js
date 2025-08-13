@@ -62,7 +62,20 @@ export class StorageManager {
    */
   static async getJSFiles(domain) {
     const data = await this.get([domain]);
-    return data[domain] || [];
+    const domainData = data[domain];
+    
+    if (!domainData) return [];
+    
+    // Handle both old format (array) and new format (object with files)
+    if (Array.isArray(domainData)) {
+      return domainData;
+    }
+    
+    if (domainData.files && Array.isArray(domainData.files)) {
+      return domainData.files.map(file => file.url || file);
+    }
+    
+    return [];
   }
 
   /**

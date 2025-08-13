@@ -64,19 +64,16 @@ export class FileRenderer {
     const isExternal = URLManager.isExternal(url, this.currentDomain);
 
     return `
-      <div class="js-url" data-url="${url}" title="Click to copy: ${url}">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <div style="flex: 1;">
-            <div style="font-weight: 600; margin-bottom: 4px; color: #333;">
-              ${filename}
-            </div>
-            <div style="font-size: 11px; color: #6c757d; margin-bottom: 2px;">
-              ${isExternal ? '🌐 External' : '🏠 Local'} • ${itemDomain}
-            </div>
-            <div style="font-size: 10px; color: #adb5bd; word-break: break-all;">
-              ${url}
-            </div>
+      <div class="js-item" data-url="${url}" title="Click to copy: ${url}">
+        <div class="js-item-content">
+          <div class="js-url">${filename}</div>
+          <div class="js-info">
+            <span class="js-tag ${isExternal ? 'type-external' : 'type-local'}">
+              ${isExternal ? '🌐 External' : '🏠 Local'}
+            </span>
+            <span class="js-tag domain-tag">${itemDomain}</span>
           </div>
+          <div class="full-url" title="${url}">${url}</div>
         </div>
       </div>
     `;
@@ -86,7 +83,7 @@ export class FileRenderer {
    * Attach click handlers to file items
    */
   attachClickHandlers() {
-    const items = DOMUtils.getElements('.js-url');
+    const items = DOMUtils.getElements('.js-item');
     items.forEach(item => {
       item.addEventListener('click', () => {
         const url = item.dataset.url;
@@ -104,7 +101,8 @@ export class FileRenderer {
    * @returns {string[]} - Array of URLs
    */
   getAllUrls() {
-    const items = DOMUtils.getElements('.js-url');
+    const items = DOMUtils.getElements('.js-item');
     return Array.from(items).map(item => item.dataset.url);
   }
+
 }

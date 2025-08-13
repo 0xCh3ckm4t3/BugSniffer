@@ -1,14 +1,15 @@
 {
   "manifest_version": 3,
   "name": "BugSniffer - JS File Collector",
-  "version": "1.0.0",
-  "description": "Automatically collects and lists all JavaScript file URLs per domain.",
+  "version": "2.0.0",
+  "description": "Automatically collects JavaScript files from web pages for easy access and download.",
   "permissions": [
     "activeTab",
     "storage",
     "scripting",
     "webRequest",
-    "webRequestBlocking"
+    "webNavigation",
+    "downloads"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -17,7 +18,7 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "popup-clean.html",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
